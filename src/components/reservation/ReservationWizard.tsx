@@ -14,7 +14,7 @@ import { formatVisitorsFromForm } from "./utils";
 import { getPublicBookingFlags, type BookingFlags } from "@/services/admin";
 import { useToast } from "@/components/ui/Toast";
 import { getAvailabilityByDate } from "@/services/availibility";
-import hasMin24Hours from "@/utils/date";
+import hasMin48Hours from "@/utils/date";
 
 
 // ⭐ Payload legacy que tu page.tsx necesita
@@ -270,9 +270,9 @@ export default function ReservationWizard({
             selectedISO={typeof fechaISO === "string" ? fechaISO : undefined}
             onSelectISO={async (iso) => {
 
-              //  Regla de 24 horas
-              if (!hasMin24Hours(iso)) {
-                toast("Las reservas deben realizarse con al menos 24 horas de anticipación.");
+              //  Regla de 48 horas
+              if (!hasMin48Hours(iso)) {
+                toast("Las reservas deben realizarse con al menos 48 horas de anticipación.");
                 return;
               }
 
@@ -295,7 +295,7 @@ export default function ReservationWizard({
             }}
           />
           <p className="text-xs text-neutral-500">
-            Las reservas deben realizarse con al menos 24 horas de anticipación.
+            Las reservas deben realizarse con al menos 48 horas de anticipación.
           </p>
           {/* <p className="text-sm text-white/70"> */}
           <p className="text-sm text-neutral-600">
