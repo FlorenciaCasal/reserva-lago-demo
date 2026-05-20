@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import HomeStatus from "../components/Home";
 import ProjectsGrid from "@/components/ProjectsGrid";
 // import ContactSection from "@/components/ContactSection";
@@ -21,6 +22,16 @@ export default function Page() {
             priority
             className="object-cover object-center"
           />
+          {process.env.NEXT_PUBLIC_DEMO_MODE === "true" && (
+            <div className="absolute inset-x-0 bottom-6 z-10 flex justify-center px-4">
+              <Link
+                href="/admin/novedades-demo"
+                className="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-primary-dark"
+              >
+                Entrar a demo Novedades IA
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
