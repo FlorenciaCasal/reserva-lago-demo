@@ -4,6 +4,14 @@ const COOKIE_NAME = "auth_token";
 
 export function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
+    const demoMode = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
+    const isDemoRoute =
+        pathname === "/admin/novedades-demo" ||
+        pathname.startsWith("/admin/novedades-demo/") ||
+        pathname === "/novedades-demo" ||
+        pathname.startsWith("/novedades-demo/");
+
+    if (demoMode && isDemoRoute) return NextResponse.next();
 
     // Zonas protegidas
     const needsAuth =
