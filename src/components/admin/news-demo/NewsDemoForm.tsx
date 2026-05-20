@@ -33,10 +33,9 @@ import type {
 } from "@/types/news-demo";
 
 const initialInput: NewsDemoInput = {
-  descripcion:
-    "Queremos contar que se inauguro un nuevo sendero interpretativo para visitantes.",
-  tono: "Institucional, calido y cercano",
-  publicoObjetivo: "Visitantes, familias, escuelas y comunidad local",
+  descripcion: "",
+  tono: "",
+  publicoObjetivo: "",
 };
 
 const emptyNews: GeneratedNews = {
@@ -342,6 +341,7 @@ export default function NewsDemoForm() {
               <textarea
                 className={`${inputClass} min-h-32 resize-y leading-relaxed`}
                 disabled={busy}
+                placeholder="Ej: Queremos comunicar la inauguracion de un nuevo sendero interpretativo."
                 value={input.descripcion}
                 onChange={(event) =>
                   setInput({ ...input, descripcion: event.target.value })
@@ -357,6 +357,7 @@ export default function NewsDemoForm() {
                 <input
                   className={inputClass}
                   disabled={busy}
+                  placeholder="Ej: institucional, cercano y educativo"
                   value={input.tono}
                   onChange={(event) => setInput({ ...input, tono: event.target.value })}
                 />
@@ -369,6 +370,7 @@ export default function NewsDemoForm() {
                 <input
                   className={inputClass}
                   disabled={busy}
+                  placeholder="Ej: familias, visitantes y escuelas"
                   value={input.publicoObjetivo}
                   onChange={(event) =>
                     setInput({ ...input, publicoObjetivo: event.target.value })
